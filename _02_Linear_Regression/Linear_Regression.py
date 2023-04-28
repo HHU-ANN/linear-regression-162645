@@ -2,6 +2,8 @@
 
 import os
 
+import numpy
+
 try:
     import numpy as np
 except ImportError as e:
@@ -17,7 +19,24 @@ def ridge(data):
     return weight @ data
     
 def lasso(data):
-    pass
+    X, y = read_data()
+    #初始化权重
+    weight = np.ones((6, 1))
+    number = y.np.size()
+    for i in range(1000):
+        #计算预测值与真实值之间的误差
+        error = X @ weight - y
+        #计算梯度
+        l1_ratio = 0.9
+        l1_grad = l1_ratio * np.sign(weight)
+        ls_grad = (1 - l1_ratio) * (X.T.dot(error)) / number
+        #求梯度之和
+        grad = ls_grad + l1_grad
+        #设置更新步长
+        alpha = 0.1
+        #更新权重
+        weight -= alpha * grad
+    return weight @ data
 
 def read_data(path='./data/exp02/'):
     x = np.load(path + 'X_train.npy')
