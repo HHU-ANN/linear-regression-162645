@@ -12,7 +12,7 @@ except ImportError as e:
 
 def ridge(data):
     #读取数据
-    X,y = read_data('')
+    X,y = read_data()
     #weight = np.ones((6,1))
     print(np.shape(X))
     I = np.eye(6)
