@@ -12,20 +12,23 @@ except ImportError as e:
 
 def ridge(data):
     #读取数据
-    X,y = read_data()
+    X,y = read_data('')
     #weight = np.ones((6,1))
-    for i in range(100):#迭代次数100次
-        weight = np.matmul(np.linalg.inv(np.matmul(X.T,X)),np.matmul(X.T,y))
+    print(np.shape(X))
+    I = np.eye(6)
+    #print(0.1*I)
+    c = 0.1
+    weight = np.matmul(np.linalg.inv(np.matmul(X.T,X)+c*I),np.matmul(X.T,y))
     return weight @ data
     
 def lasso(data):
     X, y = read_data()
     #初始化权重
-    weight = np.ones((6, 1))
-    number = y.np.size()
-    for i in range(1000):
+    weight = np.zeros(X.shape[1])
+    number = y.size
+    for i in range(10):
         #计算预测值与真实值之间的误差
-        error = X @ weight - y
+        error = X.dot(weight) - y
         #计算梯度
         l1_ratio = 0.9
         l1_grad = l1_ratio * np.sign(weight)
@@ -36,11 +39,14 @@ def lasso(data):
         alpha = 0.1
         #更新权重
         weight -= alpha * grad
+        #print(weight)
     return weight @ data
 
 def read_data(path='./data/exp02/'):
     x = np.load(path + 'X_train.npy')
+    #print(x)
     y = np.load(path + 'y_train.npy')
+    #print(y)
     return x, y
 def main():
     data = np.array([1, 2, 3, 4, 5, 6])  # 输入数据
@@ -48,3 +54,4 @@ def main():
     print(lasso(data))
 
 #main()
+#D:/myfile/data/shenjingwangluo/linear-regression-162645/data/exp02/
