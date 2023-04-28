@@ -10,7 +10,7 @@ except ImportError as e:
 
 def ridge(data):
     #读取数据
-    X,y = read_data('D:/myfile/data/shenjingwangluo/linear-regression-162645/data/exp02/')
+    X,y = read_data()
     #weight = np.ones((6,1))
     for i in range(100):#迭代次数100次
         weight = np.matmul(np.linalg.inv(np.matmul(X.T,X)),np.matmul(X.T,y))
