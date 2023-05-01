@@ -16,7 +16,7 @@ def ridge(data):
     
 def lasso(data):
     X,y = read_data()
-    model = Lasso(alpha=0.01)  # 调节alpha可以实现对拟合的程度
+    model = Lasso(alpha=0.00000000000000001)  # 调节alpha可以实现对拟合的程度
     # model = LassoCV()  # LassoCV自动调节alpha可以实现选择最佳的alpha。
     # model = LassoLarsCV()  # LassoLarsCV自动调节alpha可以实现选择最佳的alpha
     model.fit(X, y)  # 线性回归建模
