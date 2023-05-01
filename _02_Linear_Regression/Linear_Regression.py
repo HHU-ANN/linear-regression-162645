@@ -14,7 +14,7 @@ def ridge(data):
     print(np.shape(X))
     I = np.eye(6)
     #print(0.1*I)
-    c = 10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    c = 10000000000000000000000000000000000000
     weight = np.matmul(np.linalg.inv(np.matmul(X.T,X)-c*I),np.matmul(X.T,y))
     return weight @ data
 
@@ -97,7 +97,7 @@ def lasso(data):
     iter = 0
     diff = 1
     VAL = 10000
-    while iter < 100000000000 and diff > 0.0001:
+    while iter < 1000 and diff > 0.0001:
         for j in range(p):
             beta[j] = 0
             y2 = y - X.dot(beta)
