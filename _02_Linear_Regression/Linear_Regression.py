@@ -14,7 +14,7 @@ def ridge(data):
     print(np.shape(X))
     I = np.eye(6)
     #print(0.1*I)
-    c = 10
+    c = 10000000000000000000000000000000000000000000000000000000000
     weight = np.matmul(np.linalg.inv(np.matmul(X.T,X)-c*I),np.matmul(X.T,y))
     return weight @ data
 
