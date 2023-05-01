@@ -15,7 +15,7 @@ def ridge(data):
     I = np.eye(6)
     #print(0.1*I)
     c = 1
-    weight = np.matmul(np.linalg.inv(np.matmul(X.T,X)-c*I),np.matmul(X.T,y))
+    weight = np.matmul(np.linalg.inv(np.matmul(X.T,X)+c*I),np.matmul(X.T,y))
     return weight @ data
 
 
@@ -92,12 +92,12 @@ def lasso(data):
     ld = 0.0000000000000001
     beta0 = [1,1,1,1,1,1]
     beta = beta0.copy()
-    X, y = read_data()
+    X, y = read_data('D:/myfile/data/shenjingwangluo/linear-regression-162645/data/exp02/')
     n,p = X.shape
     iter = 0
     diff = 1
     VAL = 10000
-    while iter < 1000 and diff > 0.0001:
+    while iter < 100000000000 and diff > 0.0001:
         for j in range(p):
             beta[j] = 0
             y2 = y - X.dot(beta)
