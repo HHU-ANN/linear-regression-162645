@@ -111,7 +111,10 @@ def lasso(data):
     return beta @ data
     '''
     X, y = read_data()
-    alpha=0.00000000000001, l1_ratio=1, max_iter=100000000000, tol=1e-12
+    alpha=0.00000000000001
+    l1_ratio=1
+    max_iter=100000000000
+    tol=1e-12
     m, n = X.shape
     theta = np.zeros((n, 1))
     for i in range(max_iter):
