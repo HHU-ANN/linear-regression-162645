@@ -89,6 +89,7 @@ def lasso(data):
         if diffomega.all() < 1e-3:
             break'''
     #参数设置
+    '''
     ld = 0.0000000000000001
     beta0 = [1,1,1,1,1,1]
     beta = beta0.copy()
@@ -108,6 +109,24 @@ def lasso(data):
         VAL = VAL2
         iter = iter + 1
     return beta @ data
+    '''
+    X, y = read_data()
+    alpha=0.00000000000001, l1_ratio=1, max_iter=100000000000, tol=1e-12
+    m, n = X.shape
+    theta = np.zeros((n, 1))
+    for i in range(max_iter):
+        # Compute the gradient of the cost function
+        y_pred = np.dot(X, theta)
+        error = y_pred - y
+        gradient = np.dot(X.T, error) / m + l1_ratio * np.sign(theta)
+        # Update the coefficients
+        theta -= alpha * gradient
+        # Apply the L1 penalty
+        theta -= alpha * l1_ratio * np.sign(theta)
+        # Check for convergence
+        if np.linalg.norm(gradient) < tol:
+            break
+    return theta @ data
 
 def read_data(path='./data/exp02/'):
     x = np.load(path + 'X_train.npy')
@@ -117,8 +136,8 @@ def read_data(path='./data/exp02/'):
     return x, y
 def main():
     data = np.array([1, 2, 3, 4, 5, 6])  # 输入数据
-    #print(ridge(data))  # 调用main函数，打印一个输出值
+    print(ridge(data))  # 调用main函数，打印一个输出值
     print(lasso(data))
 
-main()
+#main()
 #D:/myfile/data/shenjingwangluo/linear-regression-162645/data/exp02/
