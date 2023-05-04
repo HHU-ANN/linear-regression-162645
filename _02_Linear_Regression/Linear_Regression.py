@@ -166,8 +166,10 @@ def lasso(data):
 
         # 计算损失函数
         J = 1 / (2 * m) * np.sum((X @ w + b - y) ** 2) + alpha * np.sum(np.abs(w))
-
-    return w @ data
+    data_min = data.min(axis=1, keepdims=True)
+    data_max = data.max(axis=1, keepdims=True)
+    data_normalized = (data - data_min) / (data_max - data_min)
+    return w @ data_normalized
 
 def read_data(path='./data/exp02/'):
     x = np.load(path + 'X_train.npy')
