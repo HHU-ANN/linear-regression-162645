@@ -147,25 +147,36 @@ def lasso(data):
     #X_normalized = (X - X_mean) / X_std
     #参数设置
     #初始化参数
-    learning_rate = 1e-10
-    max_iter = 1000000
-    alpha = 1
+    # 初始化参数
+    max_iter = 10000
+    tol = 1e-4
+    alpha = 0.01
+    l1_ratio = 0.5
     m, n = X.shape
     w = np.zeros(n)
-    b = 5
+    b = 0
+    iteration = 0
 
-    # 迭代更新参数
-    for i in range(max_iter):
+    # 循环迭代直到满足收敛条件
+    while iteration < max_iter:
+        # 计算预测值
+        y_pred = np.dot(X, w) + b
+
+        # 计算残差
+        residuals = y_pred - y
+
         # 计算梯度
-        dw = 1 / m * (X.T @ (X @ w + b - y)) + alpha * np.sign(w)
-        db = 1 / m * np.sum(X @ w + b - y)
+        grad_w = (1.0 / m) * (np.dot(X.T, residuals) + l1_ratio * np.sign(w))
+        grad_b = (1.0 / m) * np.sum(residuals)
 
         # 更新参数
-        w = w - learning_rate * dw
-        b = b - learning_rate * db
+        w = w - alpha * grad_w
+        b = b - alpha * grad_b
 
-        # 计算损失函数
-        J = 1 / (2 * m) * np.sum((X @ w + b - y) ** 2) + alpha * np.sum(np.abs(w))
+        # 判断是否收敛
+        if np.mean(np.abs(residuals)) < tol:
+            break
+        iteration += 1
     max_value = max(data)
     min_value = min(data)
     normalized_list = [(x - min_value) / (max_value - min_value) for x in data]
