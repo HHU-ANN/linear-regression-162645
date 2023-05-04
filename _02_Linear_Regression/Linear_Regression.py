@@ -19,7 +19,7 @@ def ridge(data):
     return weight @ data'''
     # 添加多项式特征
     X_poly = X
-    alpha = 1e-12
+    alpha = -0.1
     degree = 1
     for d in range(2, degree + 1):
         X_poly = np.concatenate((X_poly, np.power(X, d)), axis=1)
@@ -148,11 +148,11 @@ def lasso(data):
     #参数设置
     #初始化参数
     learning_rate = 1e-12
-    max_iter = 3000000
-    alpha = 0.1
+    max_iter = 100000
+    alpha = -0.1
     m, n = X.shape
     w = np.zeros(n)
-    b = 2
+    b = 5
 
     # 迭代更新参数
     for i in range(max_iter):
