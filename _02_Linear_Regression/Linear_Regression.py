@@ -148,7 +148,7 @@ def lasso(data):
     #参数设置
     #初始化参数
     # 初始化参数
-    max_iter = 10000
+    max_iter = 100000
     tol = 1e-4
     alpha = 0.01
     l1_ratio = 1
