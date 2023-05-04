@@ -148,13 +148,13 @@ def lasso(data):
     #参数设置
     #初始化参数
     # 初始化参数
-    max_iter = 200000
+    max_iter = 10000
     tol = 1e-4
     alpha = 0.01
-    l1_ratio = 1e-6
+    l1_ratio = 1
     m, n = X.shape
     w = np.zeros(n)
-    b = 0
+    b = 1
     iteration = 0
 
     # 循环迭代直到满足收敛条件
