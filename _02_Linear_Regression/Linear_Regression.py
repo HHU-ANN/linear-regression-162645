@@ -146,7 +146,7 @@ def lasso(data):
     #X_std = X.std(axis=1, keepdims=True)
     #X_normalized = (X - X_mean) / X_std
     #参数设置
-    # 初始化参数
+    #初始化参数
     learning_rate = 1e-12
     max_iter = 2500000
     alpha = 0.1
