@@ -149,10 +149,10 @@ def lasso(data):
     #初始化参数
     learning_rate = 1e-9
     max_iter = 100000
-    alpha = -0.1
+    alpha = 1
     m, n = X.shape
     w = np.zeros(n)
-    b = 1
+    b = 5
 
     # 迭代更新参数
     for i in range(max_iter):
