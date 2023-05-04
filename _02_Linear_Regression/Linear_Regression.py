@@ -148,10 +148,10 @@ def lasso(data):
     #参数设置
     #初始化参数
     # 初始化参数
-    max_iter = 100000
+    max_iter = 10000
     tol = 1e-4
     alpha = 0.01
-    l1_ratio = 1
+    l1_ratio = 1e-3
     m, n = X.shape
     w = np.zeros(n)
     b = 1
@@ -180,7 +180,7 @@ def lasso(data):
     max_value = max(data)
     min_value = min(data)
     normalized_list = [(x - min_value) / (max_value - min_value) for x in data]
-    return w @ normalized_list
+    return w @ data
 
 def read_data(path='./data/exp02/'):
     x = np.load(path + 'X_train.npy')
