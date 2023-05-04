@@ -167,10 +167,6 @@ def lasso(data):
         # 计算损失函数
         J = 1 / (2 * m) * np.sum((X @ w + b - y) ** 2) + alpha * np.sum(np.abs(w))
 
-        # 打印损失函数
-        if i % 100 == 0:
-            print(f"iteration {i}, loss {J}")
-
     return w @ data
 
 def read_data(path='./data/exp02/'):
