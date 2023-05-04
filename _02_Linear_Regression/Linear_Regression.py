@@ -19,10 +19,6 @@ def ridge(data):
     return weight @ data'''
     # 添加多项式特征
     X_poly = X
-    X_min = X.min(axis=1, keepdims=True)
-    X_max = X.max(axis=1, keepdims=True)
-    X_normalized = (X - X_min) / (X_max - X_min)
-    X_poly = X_normalized 
     alpha = 1e-12
     degree = 1
     for d in range(2, degree + 1):
