@@ -50,8 +50,8 @@ def lasso(data):
     #X_normalized = (X - X_mean) / X_std
     #参数设置
     # 初始化参数
-    learning_rate = 1e-12
-    max_iter = 1000000
+    learning_rate = 1e-10
+    max_iter = 100000
     alpha = 1e-10
     m, n = X.shape
     w = np.zeros(n)
