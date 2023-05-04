@@ -19,9 +19,6 @@ def ridge(data):
     return weight @ data'''
     # 添加多项式特征
     X_poly = X
-    num_samples = 300 # 需要选出 300 个数据
-    indices = np.random.choice(X.shape[1], size=num_samples, replace=False) # 随机选择 300 个索引
-    X_poly = X[:, indices] # 选出对应的数据
     alpha = 1e-12
     degree = 1
     for d in range(2, degree + 1):
