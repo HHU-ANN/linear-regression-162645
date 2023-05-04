@@ -151,7 +151,7 @@ def lasso(data):
     max_iter = 200000
     tol = 1e-4
     alpha = 0.01
-    l1_ratio = 1e-10
+    l1_ratio = 1e-6
     m, n = X.shape
     w = np.zeros(n)
     b = 0
