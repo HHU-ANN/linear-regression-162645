@@ -140,14 +140,14 @@ def lasso(data):
     X_min = X.min(axis=1, keepdims=True)
     X_max = X.max(axis=1, keepdims=True)
     X_normalized = (X - X_min) / (X_max - X_min)
-    #X = X_normalized
+    X = X_normalized
     # Z-score归一化
     #X_mean = X.mean(axis=1, keepdims=True)
     #X_std = X.std(axis=1, keepdims=True)
     #X_normalized = (X - X_mean) / X_std
     #参数设置
     #初始化参数
-    learning_rate = 1e-13
+    learning_rate = 1e-9
     max_iter = 100000
     alpha = -0.1
     m, n = X.shape
