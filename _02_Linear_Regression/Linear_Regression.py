@@ -88,5 +88,5 @@ def main():
     print(ridge(data))  # 调用main函数，打印一个输出值
     print(lasso(data))
 
-main()
+#main()
 #D:/myfile/data/shenjingwangluo/linear-regression-162645/data/exp02/
