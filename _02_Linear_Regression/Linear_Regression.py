@@ -169,11 +169,11 @@ def lasso(data):
         J = 1 / (2 * m) * np.sum((X @ w + b - y) ** 2) + alpha * np.sum(np.abs(w))
 
         # 打印损失函数
-        if i % 100 == 0:
-            print(f"iteration {i}, loss {J}")
+        #if i % 100 == 0:
+            #print(f"iteration {i}, loss {J}")
     max_value = max(data)
     min_value = min(data)
-    normalized_list = [(data - min_value) / (max_value - min_value) for x in data]
+    normalized_list = [(x - min_value) / (max_value - min_value) for x in data]
     return w @ normalized_list
 
 def read_data(path='./data/exp02/'):
