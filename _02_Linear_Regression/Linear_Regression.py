@@ -140,7 +140,7 @@ def lasso(data):
     X_min = X.min(axis=1, keepdims=True)
     X_max = X.max(axis=1, keepdims=True)
     X_normalized = (X - X_min) / (X_max - X_min)
-    X = X_normalized
+    #X = X_normalized
     # Z-score归一化
     #X_mean = X.mean(axis=1, keepdims=True)
     #X_std = X.std(axis=1, keepdims=True)
@@ -152,7 +152,7 @@ def lasso(data):
     max_iter = 2500000
     alpha = 0.1
     m, n = X.shape
-    w = np.zeros(n)
+    w = [ 1.41037162e+00, -2.56126531e-01, -5.56735108e-03,  1.26335401e+00, 2.25234437e+01, -2.76323596e+01]
     b = 2
 
     # 迭代更新参数
@@ -174,7 +174,7 @@ def lasso(data):
     max_value = max(data)
     min_value = min(data)
     normalized_list = [(x - min_value) / (max_value - min_value) for x in data]
-    return w @ normalized_list
+    return w @ data
 
 def read_data(path='./data/exp02/'):
     x = np.load(path + 'X_train.npy')
