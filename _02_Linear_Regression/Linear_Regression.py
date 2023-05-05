@@ -148,10 +148,10 @@ def lasso(data):
     #参数设置
     #初始化参数
     # 初始化参数
-    max_iter = 100000
+    max_iter = 200000
     tol = 1e-4
-    alpha = 0.01
-    l1_ratio = 1e-4
+    alpha = 1
+    l1_ratio = 1e-6
     m, n = X.shape
     w = np.zeros(n)
     b = 1
