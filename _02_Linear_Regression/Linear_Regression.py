@@ -31,7 +31,6 @@ def ridge(data):
 
     return w @ data
 
-
 def sfun(t,ld):
     tmp = (np.abs(t)-ld)
     if tmp < 0:
@@ -58,6 +57,7 @@ def lasso(data):
         #print(weight)
     return weight @ data'''
     #参数设置
+    w = [ 1.49462241e+01, -2.50275341e-01, -8.76423789e-03,  1.23727271e+00,-1.80224870e+02,-2.10164997e+02]
     '''iternum = 1000
     lamda = 0.1
     X, y = read_data('D:/myfile/data/shenjingwangluo/linear-regression-162645/data/exp02/')
@@ -145,14 +145,11 @@ def lasso(data):
     #X_mean = X.mean(axis=1, keepdims=True)
     #X_std = X.std(axis=1, keepdims=True)
     #X_normalized = (X - X_mean) / X_std
-    #参数设置
     #初始化参数
-    # 初始化参数
     learning_rate = 1e-10
     max_iter = 100000
     alpha = 1
     m, n = X.shape
-    w = [ 1.49462241e+01, -2.50275341e-01, -8.76423789e-03,  1.23727271e+00,-1.80224870e+02,-2.10164997e+02]
     b = 0
 
     # 迭代更新参数
@@ -169,8 +166,8 @@ def lasso(data):
         J = 1 / (2 * m) * np.sum((X @ w + b - y) ** 2) + alpha * np.sum(np.abs(w))
 
         # 打印损失函数
-        #if i % 100 == 0:
-            #print(f"iteration {i}, loss {J}")
+        if i % 100 == 0:
+            print(f"iteration {i}, loss {J}")
     max_value = max(data)
     min_value = min(data)
     normalized_list = [(x - min_value) / (max_value - min_value) for x in data]
