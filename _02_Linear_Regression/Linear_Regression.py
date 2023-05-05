@@ -148,7 +148,7 @@ def lasso(data):
     #参数设置
     #初始化参数
     # 初始化参数
-    learning_rate = 1e-16
+    learning_rate = 1e-20
     max_iter = 1000
     alpha = 0.1
     m, n = X.shape
